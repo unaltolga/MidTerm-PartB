@@ -1,0 +1,123 @@
+========================================
+          CAREPOINT HOSPITAL
+          MANAGEMENT SYSTEM
+========================================
+
+PATIENT REGISTRATION
+Patient Number: P1001
+Person ID: 1
+Name: Priya Sharma
+Phone: 416-555-0142
+Role: Patient
+Age: 35
+Department: Cardiology
+Consultation Fee: Not assigned yet
+Registration Status: Successful
+
+Patient Number: P1002
+Person ID: 2
+Name: Daniel Brown
+Phone: Not provided
+Role: Patient
+Age: 42
+Department: General Medicine
+Consultation Fee: Not assigned yet
+Registration Status: Successful
+
+Name: (missing)
+Age: 28
+Registration Status: Failed (Name cannot be empty.)
+
+Name: Tom Lee
+Age: 150
+Registration Status: Failed (Age must be between 0 and 120.)
+
+STAFF DETAILS (displayStaffDetails() through MedicalStaff references)
+Staff ID: D2001
+Name: Dr. Amit Kumar
+Role: Doctor
+Department: Cardiology
+Phone: 416-555-0110
+Monthly Salary: $9000.00
+Patients Seen: 100
+Consultation Fee: $150.00
+Monthly Compensation: $10000.00
+
+Staff ID: D2002
+Name: Dr. Neha Patel
+Role: Specialist Doctor (Neurology)
+Department: Neurosciences
+Phone: 416-555-0111
+Monthly Salary: $12000.00
+Patients Seen: 80
+Consultation Fee: $200.00
+Monthly Compensation: $14800.00
+Specialization: Neurology
+Specialist Surcharge: $50.00
+
+Staff ID: N3001
+Name: Sarah Wilson
+Role: Nurse (Night shift)
+Department: Emergency
+Phone: 416-555-0112
+Monthly Salary: $5000.00
+Shift: Night
+Shift Allowance: $500.00
+Monthly Compensation: $5500.00
+
+STAFF CREATION WITH INVALID DATA
+Staff creation for Mark Green: Failed (Monthly salary cannot be negative.)
+
+CONSULTATION FEE CALCULATIONS
+Dr. Amit Kumar (Doctor)
+Standard Consultation Fee: $150.00
+Consultation Fee After 10% Discount: $135.00
+Consultation Fee With 10% Discount and $40.00 Additional Charge: $175.00
+
+Dr. Neha Patel (Specialist Doctor (Neurology))
+Standard Consultation Fee: $200.00
+Consultation Fee After 10% Discount: $180.00
+Consultation Fee With 10% Discount and $40.00 Additional Charge: $220.00
+
+Discount of 120%: Rejected (Discount must be between 0 and 100 percent.)
+
+MONTHLY COMPENSATION (calculateMonthlyCompensation() through MedicalStaff references)
+Dr. Amit Kumar (Doctor): $10000.00
+Dr. Neha Patel (Specialist Doctor (Neurology)): $14800.00
+Sarah Wilson (Nurse (Night shift)): $5500.00
+Total Monthly Payroll: $30300.00
+
+APPOINTMENT SCHEDULING (Schedulable)
+Appointment with Dr. Amit Kumar on 2026-11-02 10:00: Successful
+Appointment with Dr. Amit Kumar: Failed (the slot 2026-11-02 10:00 is already booked)
+Appointment with Dr. Neha Patel on 2026-11-03 14:30: Successful
+Appointment with Dr. Neha Patel: Failed ("03/11/2026" is not a valid yyyy-MM-dd HH:mm date)
+Appointment with Dr. Neha Patel: Failed ("2026-02-30 09:00" is not a valid yyyy-MM-dd HH:mm date)
+
+REPORTS (Reportable)
+[Patient] P1001 | Priya Sharma | Age 35
+        Department: Cardiology | Consultation Fee: $135.00
+[Patient] P1002 | Daniel Brown | Age 42
+        Department: General Medicine | Consultation Fee: $200.00
+[Staff] D2001 | Dr. Amit Kumar | Doctor
+        Patients Seen: 100 | Fee: $150.00 | Compensation: $10000.00 | Appointments: 2026-11-02 10:00
+[Staff] D2002 | Dr. Neha Patel | Specialist Doctor (Neurology)
+        Patients Seen: 80 | Fee: $200.00 | Compensation: $14800.00 | Appointments: 2026-11-03 14:30
+[Staff] N3001 | Sarah Wilson | Nurse (Night shift)
+        Department: Emergency | Compensation: $5500.00
+
+REGISTRATION SUMMARY
+Total People: 5
+Total Patients: 2
+Total Medical Staff: 3
+
+Registered people (toString()):
+  Patient #1: Priya Sharma (Phone: 416-555-0142)
+  Patient #2: Daniel Brown (Phone: Not provided)
+  Doctor #3: Dr. Amit Kumar (Phone: 416-555-0110) | Staff ID: D2001
+  Specialist Doctor (Neurology) #4: Dr. Neha Patel (Phone: 416-555-0111) | Staff ID: D2002
+  Nurse (Night shift) #5: Sarah Wilson (Phone: 416-555-0112) | Staff ID: N3001
+
+========================================
+            END OF REPORT
+========================================

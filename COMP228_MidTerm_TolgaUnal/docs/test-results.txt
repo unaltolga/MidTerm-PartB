@@ -1,0 +1,89 @@
+========================================
+   HOSPITAL MANAGEMENT SYSTEM TESTS
+========================================
+
+TC01: Successful patient registration (name, age, department)
+  PASS  patient object created | expected: not null | actual: not null
+  PASS  name | expected: Priya Sharma | actual: Priya Sharma
+  PASS  age | expected: 35 | actual: 35
+  PASS  department | expected: Cardiology | actual: Cardiology
+  PASS  patient number | expected: P1001 | actual: P1001
+  PASS  patient count | expected: 1 | actual: 1
+  PASS  person count | expected: 1 | actual: 1
+  PASS  success message printed | expected: true | actual: true
+
+TC02: Registration with basic details only (overloaded registerPatient(name, age))
+  PASS  patient object created | expected: not null | actual: not null
+  PASS  department | expected: General Medicine | actual: General Medicine
+  PASS  phone | expected: Not provided | actual: Not provided
+
+TC03: Rejection of an invalid patient age
+  PASS  age 150 rejected | expected: null | actual: null
+  PASS  age -1 rejected | expected: null | actual: null
+  PASS  failure message printed | expected: true | actual: true
+  PASS  patient count unchanged | expected: 2 | actual: 2
+  PASS  person count unchanged | expected: 2 | actual: 2
+
+TC04: Rejection of missing required information
+  PASS  empty name rejected | expected: null | actual: null
+  PASS  null name rejected | expected: null | actual: null
+  PASS  blank department rejected | expected: null | actual: null
+  PASS  name message printed | expected: true | actual: true
+  PASS  department message printed | expected: true | actual: true
+  PASS  patient count unchanged | expected: 2 | actual: 2
+  PASS  person count unchanged | expected: 2 | actual: 2
+
+TC05: Consultation fee without a discount
+  PASS  doctor standard fee | expected: $150.00 | actual: $150.00
+  PASS  specialist fee = 150 + 50 surcharge | expected: $200.00 | actual: $200.00
+  PASS  0% discount = standard fee | expected: $150.00 | actual: $150.00
+
+TC06: Consultation fee with a discount and with an additional charge
+  PASS  doctor, 10% discount | expected: $135.00 | actual: $135.00
+  PASS  doctor, 10% discount + $40 | expected: $175.00 | actual: $175.00
+  PASS  specialist, 10% discount | expected: $180.00 | actual: $180.00
+  PASS  specialist, 10% discount + $40 | expected: $220.00 | actual: $220.00
+  PASS  discount of 120% rejected | expected: true | actual: true
+  PASS  negative charge rejected | expected: true | actual: true
+
+TC07: Monthly compensation for different staff categories
+  PASS  doctor: 9000 + 100 x 10 | expected: $10000.00 | actual: $10000.00
+  PASS  specialist: 12000 + 80 x 10 + 2000 | expected: $14800.00 | actual: $14800.00
+  PASS  nurse: 5000 + 500 | expected: $5500.00 | actual: $5500.00
+  PASS  doctor after one more patient | expected: $10010.00 | actual: $10010.00
+
+TC08: Correct static counter values after object creation
+  PASS  person count +4 | expected: 13 | actual: 13
+  PASS  patient count +1 | expected: 3 | actual: 3
+  PASS  staff count +3 (specialist counted once) | expected: 10 | actual: 10
+
+TC09: Rejection of invalid staff data without changing the counters
+  PASS  nurse with negative salary rejected | expected: true | actual: true
+  PASS  doctor with negative fee rejected | expected: true | actual: true
+  PASS  specialist without specialization rejected | expected: true | actual: true
+  PASS  staff without name rejected | expected: true | actual: true
+  PASS  person count unchanged | expected: 13 | actual: 13
+  PASS  staff count unchanged | expected: 10 | actual: 10
+
+TC10: Appointment scheduling through the Schedulable interface
+  PASS  only the valid slot is stored | expected: 1 | actual: 1
+  PASS  success message printed | expected: true | actual: true
+  PASS  booked slot rejected | expected: true | actual: true
+  PASS  four failure messages | expected: 4 | actual: 4
+  PASS  specialist inherits scheduling | expected: true | actual: true
+
+TC11: Abstract classes, final fields and interfaces are in place
+  PASS  Person is abstract | expected: true | actual: true
+  PASS  MedicalStaff is abstract | expected: true | actual: true
+  PASS  Person.personId is final | expected: true | actual: true
+  PASS  Patient.patientNumber is final | expected: true | actual: true
+  PASS  MedicalStaff.staffId is final | expected: true | actual: true
+  PASS  Doctor.consultationFee is final | expected: true | actual: true
+  PASS  SpecialistDoctor.specialization is final | expected: true | actual: true
+  PASS  Nurse.shiftType is final | expected: true | actual: true
+  PASS  Doctor implements both interfaces | expected: true | actual: true
+  PASS  SpecialistDoctor -> Doctor -> MedicalStaff -> Person | expected: true | actual: true
+
+========================================
+Result: 60 passed, 0 failed, 60 total
+========================================
